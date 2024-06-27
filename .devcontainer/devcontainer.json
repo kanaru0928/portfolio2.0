@@ -7,7 +7,11 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"astro-build.astro-vscode"
+				"astro-build.astro-vscode",
+				"mhutchie.git-graph",
+				"eamodio.gitlens",
+				"esbenp.prettier-vscode",
+				"bradlc.vscode-tailwindcss"
 			]
 		}
 	}
