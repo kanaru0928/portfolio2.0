@@ -19,7 +19,9 @@ const { text, description } = Astro.props;
     </div>
     <div class="overlay"></div>
     <div class="xl:w-1/2 shrink z-10">
-      <h1 class="text-[clamp(2rem,6vw,4.2rem)] font-black drop-shadow-lg">{text}</h1>
+      <h1 class="text-[clamp(2rem,6vw,4.2rem)] font-black drop-shadow-lg">
+        {text}
+      </h1>
       <p class="py-6 font-light">{description}</p>
     </div>
   </div>
