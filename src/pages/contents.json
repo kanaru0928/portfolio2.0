@@ -1,0 +1,14 @@
+{
+  "header": {
+    "text": "Kanaru",
+    "description": "the University of Electro-Communications"
+  },
+  "about": {
+    "contents": [
+      {
+        "title": "profile",
+        "texts": ["Kanaru"]
+      }
+    ]
+  }
+}
