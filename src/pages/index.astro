@@ -1,13 +1,43 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import HeroHeader from "../components/HeroHeader.astro";
+import Navbar from "../components/Navbar.tsx";
+import Parallax from "../components/Parallax";
+import ParallaxedHeader from "../components/ParallaxedHeader";
+import Heading2 from "../components/Heading2";
+import contents from "./contents.json";
 ---
 
 <Layout title="Welcome to Astro.">
   <main>
-    <HeroHeader
-      text="Portfolio2.0"
-      description="This is the description of this portfolio."
+    <div class="fixed top-0 left-0 right-0 z-20">
+      <Navbar client:load />
+    </div>
+    <ParallaxedHeader
+      text={contents.header.text}
+      description={contents.header.description}
+      client:load
     />
+    <div class="bg-base-100 relative min-h-screen">
+      <div class="py-10 mx-auto max-w-screen-md w-4/5">
+        <Heading2 client:load>About</Heading2>
+        <div class="mx-6">
+          {
+            contents.about.contents.map((content) => (
+              <div class="card bg-base-200 dark:bg-base-300 border-2 border-accent w-full shadow-xl my-4">
+                <div class="card-body">
+                  <h3 class="card-title">{content.title}</h3>
+                  <ul>
+                    {content.texts.map((text) => (
+                      <li>{text}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
   </main>
 </Layout>

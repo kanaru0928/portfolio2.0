@@ -9,8 +9,59 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="ja">
   <head>
+    <script is:inline>
+      if (localStorage.getItem("theme") === null) {
+        document.documentElement.setAttribute(
+          "data-theme",
+          window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "mocha"
+            : "latte"
+        );
+      } else {
+        document.documentElement.setAttribute(
+          "data-theme",
+          localStorage.getItem("theme")
+        );
+      }
+    </script>
+    <script>
+      import { themeChange } from "theme-change";
+
+      themeChange();
+    </script>
+    <script is:raw>
+      (function (d) {
+        var config = {
+            kitId: "zqa6rzb",
+            scriptTimeout: 3000,
+            async: true,
+          },
+          h = d.documentElement,
+          t = setTimeout(function () {
+            h.className =
+              h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+          }, config.scriptTimeout),
+          tk = d.createElement("script"),
+          f = false,
+          s = d.getElementsByTagName("script")[0],
+          a;
+        h.className += " wf-loading";
+        tk.src = "https://use.typekit.net/" + config.kitId + ".js";
+        tk.async = true;
+        tk.onload = tk.onreadystatechange = function () {
+          a = this.readyState;
+          if (f || (a && a != "complete" && a != "loaded")) return;
+          f = true;
+          clearTimeout(t);
+          try {
+            Typekit.load(config);
+          } catch (e) {}
+        };
+        s.parentNode.insertBefore(tk, s);
+      })(document);
+    </script>
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
@@ -22,35 +73,3 @@ const { title } = Astro.props;
     <slot />
   </body>
 </html>
-
-<script>
-  (function (d) {
-    var config = {
-        kitId: "zqa6rzb",
-        scriptTimeout: 3000,
-        async: true,
-      },
-      h = d.documentElement,
-      t = setTimeout(function () {
-        h.className =
-          h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
-      }, config.scriptTimeout),
-      tk = d.createElement("script"),
-      f = false,
-      s = d.getElementsByTagName("script")[0],
-      a;
-    h.className += " wf-loading";
-    tk.src = "https://use.typekit.net/" + config.kitId + ".js";
-    tk.async = true;
-    tk.onload = tk.onreadystatechange = function () {
-      a = this.readyState;
-      if (f || (a && a != "complete" && a != "loaded")) return;
-      f = true;
-      clearTimeout(t);
-      try {
-        Typekit.load(config);
-      } catch (e) {}
-    };
-    s.parentNode.insertBefore(tk, s);
-  })(document);
-</script>
