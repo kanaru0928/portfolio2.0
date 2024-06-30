@@ -11,6 +11,20 @@ const { title } = Astro.props;
 <!doctype html>
 <html lang="ja">
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      type="text/partytown"
+      src="https://www.googletagmanager.com/gtag/js?id=G-6LST1432NY"></script>
+    <script type="text/partytown">
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-6LST1432NY");
+    </script>
     <script is:inline>
       if (localStorage.getItem("theme") === null) {
         document.documentElement.setAttribute(
