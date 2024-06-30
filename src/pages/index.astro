@@ -8,7 +8,7 @@ import Heading2 from "../components/Heading2";
 import contents from "./contents.json";
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title={contents.title}>
   <main>
     <div class="fixed top-0 left-0 right-0 z-20">
       <Navbar client:load />

@@ -1,4 +1,5 @@
 {
+  "title": "Kanaru's Portfolio 2.0",
   "header": {
     "text": "Kanaru",
     "description": "the University of Electro-Communications"
@@ -6,7 +7,7 @@
   "about": {
     "contents": [
       {
-        "title": "profile",
+        "title": "Profile",
         "texts": ["Kanaru"]
       }
     ]
