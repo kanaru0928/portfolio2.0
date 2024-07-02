@@ -6,6 +6,8 @@ import Parallax from "../components/Parallax";
 import ParallaxedHeader from "../components/ParallaxedHeader";
 import Heading2 from "../components/Heading2";
 import contents from "./contents.json";
+import { Image } from "astro:assets";
+import miku1 from "../images/miku1.png";
 ---
 
 <Layout title={contents.title}>
@@ -17,7 +19,9 @@ import contents from "./contents.json";
       text={contents.header.text}
       description={contents.header.description}
       client:load
-    />
+    >
+      <Image src={miku1} alt="Miku" />
+    </ParallaxedHeader>
     <div class="bg-base-100 relative min-h-screen">
       <div class="py-10 mx-auto max-w-screen-md w-4/5">
         <Heading2 client:load>About</Heading2>
