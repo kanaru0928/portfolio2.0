@@ -1,14 +1,26 @@
 {
   "title": "Kanaru's Portfolio 2.0",
   "header": {
-    "text": "Kanaru",
+    "text": "Portfolio 2.0",
     "description": "the University of Electro-Communications"
   },
   "about": {
     "contents": [
       {
+        "title": "Introduction",
+        "texts": ["Name"]
+      },
+      {
         "title": "Profile",
-        "texts": ["Kanaru"]
+        "texts": ["University", "Department"]
+      },
+      {
+        "title": "Skills",
+        "texts": ["HTML", "CSS", "JavaScript"]
+      },
+      {
+        "title": "Hobbies",
+        "texts": ["Reading", "Watching movies"]
       }
     ]
   }
