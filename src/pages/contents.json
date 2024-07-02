@@ -8,20 +8,31 @@
     "contents": [
       {
         "title": "Introduction",
-        "texts": ["Kanaru Azuma", "電気通信大学情報理工学域 B2", "team411 代表"]
+        "body": [
+          { "text": "Kanaru Azuma" },
+          { "text": "電気通信大学情報理工学域 B2" },
+          { "text": "team411 代表" }
+        ]
       },
       {
         "title": "Profile",
-        "texts": ["Since 2004"]
+        "body": [{ "text": "Since 2004" }]
       },
       {
         "title": "Skills",
-        "texts": ["Python / PyTorch", "C# / .NET Framework", "etc."],
-        "icons": ["python", "windows", ""]
+        "body": [
+          { "text": "Python / PyTorch", "icon": "python" },
+          { "text": "C# / .NET Framework", "icon": "windows" },
+          { "text": "etc." }
+        ]
       },
       {
         "title": "Hobbies",
-        "texts": ["動画制作", "自宅鯖", "音楽ゲーム"]
+        "body": [
+          { "text": "動画制作" },
+          { "text": "自宅鯖" },
+          { "text": "音楽ゲーム" }
+        ]
       }
     ]
   }
