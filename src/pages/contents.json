@@ -1,26 +1,26 @@
 {
   "title": "Kanaru's Portfolio 2.0",
   "header": {
-    "text": "Portfolio 2.0",
+    "text": "Kanaru",
     "description": "the University of Electro-Communications"
   },
   "about": {
     "contents": [
       {
         "title": "Introduction",
-        "texts": ["Name"]
+        "texts": ["Kanaru Azuma", "電気通信大学情報理工学域 B2", "team411 代表"]
       },
       {
         "title": "Profile",
-        "texts": ["University", "Department"]
+        "texts": ["Since 2004"]
       },
       {
         "title": "Skills",
-        "texts": ["HTML", "CSS", "JavaScript"]
+        "texts": ["Python / PyTorch", "C# / .NET Framework", "etc."]
       },
       {
         "title": "Hobbies",
-        "texts": ["Reading", "Watching movies"]
+        "texts": ["動画制作", "自宅鯖", "音楽ゲーム"]
       }
     ]
   }
