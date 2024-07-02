@@ -16,7 +16,8 @@
       },
       {
         "title": "Skills",
-        "texts": ["Python / PyTorch", "C# / .NET Framework", "etc."]
+        "texts": ["Python / PyTorch", "C# / .NET Framework", "etc."],
+        "icons": ["python", "windows", ""]
       },
       {
         "title": "Hobbies",
