@@ -3,8 +3,6 @@ import Parallax from "./Parallax";
 import useScrollPosition from "../hooks/useScrollPosition";
 import { TbChevronsDown } from "react-icons/tb";
 
-type ImageProps = "hero";
-
 interface ParallaxedHeaderProps {
   text: string;
   description: string;

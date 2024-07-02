@@ -1,0 +1,23 @@
+---
+import type { ReactNode } from "react";
+import type { IconType } from "react-icons";
+import { TbBrandGithub, TbBrandPython, TbBrandWindows } from "react-icons/tb";
+
+const brandIcon: Record<string, IconType> = {
+  python: TbBrandPython,
+  github: TbBrandGithub,
+  windows: TbBrandWindows,
+} as const;
+
+interface Props {
+  kind: string;
+}
+const { kind } = Astro.props;
+
+const Icon = brandIcon[kind];
+---
+
+<>
+  {() => (Icon ? <Icon className="mr-1" /> : null)}
+  <!-- {brandIcon[kind] && "&nbsp"}; -->
+</>
