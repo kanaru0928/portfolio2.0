@@ -33,12 +33,12 @@ import BrandIcons from "../components/BrandIcons.astro";
                 <div class="card-body">
                   <h3 class="card-title">{content.title}</h3>
                   <ul>
-                    {content.body.map((b) => (
-                      <li class="flex items-center">
+                    {content.body.map(({text, icon}) => (
+                      <li class="flex items-center gap-2">
                         <BrandIcons
-                          kind={b.icon ? b.icon : ""}
+                          kind={icon || ""}
                         />
-                        {b.text}
+                        {text}
                       </li>
                     ))}
                   </ul>
