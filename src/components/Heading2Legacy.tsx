@@ -1,11 +1,11 @@
 import React, { useMemo, useRef } from "react";
 import { useOffsetTop } from "../hooks/useOffsetTop";
 
-interface Heading2Props {
+interface Heading2LegacyProps {
   children: React.ReactNode;
 }
 
-export default function Heading2({ children }: Heading2Props) {
+export default function Heading2Legacy({ children }: Heading2LegacyProps) {
   const ref = useRef<HTMLDivElement>(null);
   const { viewportTop } = useOffsetTop(ref);
 

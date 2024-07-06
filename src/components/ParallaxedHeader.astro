@@ -1,0 +1,65 @@
+---
+import { TbChevronsDown } from "react-icons/tb";
+import { Image } from "astro:assets";
+import miku1 from "../images/miku1.png";
+
+interface Props {
+  text: string;
+  description: string;
+}
+
+const { text, description } = Astro.props;
+---
+
+<div class="parallax">
+  <div class="hero min-h-screen relative bg-base-300">
+    <div
+      class="hero-content flex-col lg:flex-row-reverse xl:max-w-[90svw] w-full justify-center xl:justify-between"
+    >
+      <div class="w-1/2 shrink max-h-80 lg:max-h-full">
+        <Image src={miku1} alt="miku1" />
+      </div>
+      <div
+        class="overlay absolute top-0 bottom-0 right-0 left-0 bg-gradient-to-t from-[rgba(0,0,0,.2)] dark:from-[rgba(0,0,0,.5)]"
+      >
+      </div>
+      <div class="xl:w-1/2 shrink z-10">
+        <div class="wf-non-active:hidden">
+          <h1
+            class="text-[clamp(2rem,6vw,4.2rem)] font-black text-accent wf-non-active:text-transparent"
+          >
+            {text}
+          </h1>
+          <p class="my-6 font-light">{description}</p>
+        </div>
+        <div class="hidden wf-non-active:block transition">
+          <div
+            class="h-[clamp(2rem,6vw,4.2rem)] w-72 bg-base-100 rounded-full animate-pulse"
+          >
+          </div>
+          <div class="h-4 w-96 my-6 bg-base-100 rounded-full animate-pulse">
+          </div>
+        </div>
+      </div>
+    </div>
+    <TbChevronsDown className="absolute bottom-3 text-5xl animate-bounce" />
+  </div>
+</div>
+
+<style lang="scss">
+  @keyframes header-parallax {
+    0% {
+      transform: translateY(0);
+      filter: blur(0);
+    }
+    100% {
+      transform: translateY(50%);
+      filter: blur(8px);
+    }
+  }
+  
+  .parallax {
+    animation: header-parallax linear;
+    animation-timeline: scroll();
+  }
+</style>
