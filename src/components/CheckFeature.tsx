@@ -14,7 +14,7 @@ export default function CheckFeature() {
 
     const view = !checkFeature("animation-timeline: view()");
     const scroll = !checkFeature("animation-timeline: scroll()");
-    const range = !checkFeature("animation-range");
+    const range = !checkFeature("animation-range: normal");
 
     if (view || scroll || range) {
       modal.current?.showModal();
