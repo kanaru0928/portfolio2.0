@@ -11,6 +11,7 @@ import { Image } from "astro:assets";
 import miku1 from "../images/miku1.png";
 import BrandIcons from "../components/BrandIcons.astro";
 import Card from "../components/Card.astro";
+import CheckFeature from "../components/CheckFeature";
 
 export const prerender = false;
 let isLegacy = false;
@@ -31,6 +32,7 @@ if (Astro.request.method === "GET") {
 
 <Layout title={contents.title}>
   <main>
+    {isLegacy ? null : <CheckFeature client:load />}
     <div class="fixed top-0 left-0 right-0 z-20">
       <Navbar client:load />
     </div>
@@ -55,8 +57,7 @@ if (Astro.request.method === "GET") {
         {
           isLegacy ? (
             <Heading2Legacy client:load>About</Heading2Legacy>
-            
-          ): (
+          ) : (
             <Heading2>About</Heading2>
           )
         }
