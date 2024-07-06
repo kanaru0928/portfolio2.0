@@ -11,10 +11,10 @@ export function useOffsetTop(ref?: React.RefObject<HTMLElement>) {
 
     const clientRect = ref.current.getBoundingClientRect();
     setViewportTop(clientRect.top);
-    const newPageOffsetTop = clientRect.top + window.pageYOffset;
+    const newPageOffsetTop = clientRect.top + window.scrollY;
     setPageOffsetTop(newPageOffsetTop);
     // console.log(clientRect.top);
-  }; // 100msに一度実行
+  };
 
   useEffect(() => {
     if (!ref?.current) return;

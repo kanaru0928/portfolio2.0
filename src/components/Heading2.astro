@@ -1,0 +1,56 @@
+---
+
+---
+
+<div class="relative inline-block mt-2 mb-5">
+  <h2
+    class="text-4xl font-bold px-5 pt-2 text-transparent text-wipe bg-no-repeat bg-clip-text"
+  >
+    <slot />
+  </h2>
+  <div class="bg-white absolute h-full top-0 mix-blend-difference overlay">
+  </div>
+</div>
+
+<style lang="scss">
+  @keyframes overlay {
+    0% {
+      left: 0;
+      width: 0;
+    }
+
+    50% {
+      left: 0;
+      width: 100%;
+    }
+
+    100% {
+      left: 100%;
+      width: 0;
+    }
+  }
+
+  @keyframes text-wipe {
+    0% {
+      background-size: 0% 100%;
+    }
+
+    50% {
+      background-size: 100% 100%;
+    }
+  }
+
+  .overlay {
+    animation: overlay ease-in-out;
+    animation-timeline: view();
+    animation-range: 0% 40%;
+  }
+
+  .text-wipe {
+    background-image: linear-gradient(90deg, oklch(var(--bc)), oklch(var(--bc)));
+    
+    animation: text-wipe ease-in-out;
+    animation-timeline: view();
+    animation-range: 0% 40%;
+  }
+</style>

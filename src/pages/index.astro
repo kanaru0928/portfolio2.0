@@ -1,38 +1,68 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import HeroHeader from "../components/HeroHeader.astro";
-import Navbar from "../components/Navbar.tsx";
-import Parallax from "../components/Parallax";
-import ParallaxedHeader from "../components/ParallaxedHeader";
-import Heading2 from "../components/Heading2";
+import Navbar from "../components/Navbar";
+import ParallaxedHeader from "../components/ParallaxedHeader.astro";
+import ParallaxedHeaderLegacy from "../components/ParallaxedHeaderLegacy";
+import Heading2 from "../components/Heading2.astro";
+import Heading2Legacy from "../components/Heading2Legacy";
 import contents from "./contents.json";
 import { Image } from "astro:assets";
 import miku1 from "../images/miku1.png";
 import BrandIcons from "../components/BrandIcons.astro";
 import Card from "../components/Card.astro";
+import CheckFeature from "../components/CheckFeature";
+
+export const prerender = false;
+let isLegacy = false;
+
+if (Astro.request.method === "GET") {
+  const url = new URL(Astro.request.url);
+  const params = new URLSearchParams(url.search);
+  isLegacy = params.get("legacy") === "true";
+} else {
+  return {
+    status: 405,
+    headers: {
+      Allow: "GET",
+    },
+  };
+}
 ---
 
 <Layout title={contents.title}>
   <main>
+    {isLegacy ? null : <CheckFeature client:load />}
     <div class="fixed top-0 left-0 right-0 z-20">
       <Navbar client:load />
     </div>
-    <ParallaxedHeader
-      text={contents.header.text}
-      description={contents.header.description}
-      client:load
-    >
-      <Image src={miku1} alt="Miku" />
-    </ParallaxedHeader>
+    {
+      isLegacy ? (
+        <ParallaxedHeaderLegacy
+          text={contents.header.text}
+          description={contents.header.description}
+          client:load
+        >
+          <Image src={miku1} alt="Miku" />
+        </ParallaxedHeaderLegacy>
+      ) : (
+        <ParallaxedHeader
+          text={contents.header.text}
+          description={contents.header.description}
+        />
+      )
+    }
     <div class="bg-base-100 relative min-h-screen">
       <div class="py-10 px-3 sm:mx-auto sm:max-w-screen-md sm:w-4/5">
-        <Heading2 client:load>About</Heading2>
+        {
+          isLegacy ? (
+            <Heading2Legacy client:load>About</Heading2Legacy>
+          ) : (
+            <Heading2>About</Heading2>
+          )
+        }
         <div class="mx-3 sm:mx-6">
-          {
-            contents.about.contents.map((content) => (
-              <Card content={content} />
-            ))
-          }
+          {contents.about.contents.map((content) => <Card content={content} />)}
         </div>
       </div>
     </div>
