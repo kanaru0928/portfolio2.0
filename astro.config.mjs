@@ -17,5 +17,7 @@ export default defineConfig({
     }),
   ],
   output: "hybrid",
-  adapter: cloudflare(),
+  adapter: cloudflare({
+    imageService: "cloudflare",
+  }),
 });
