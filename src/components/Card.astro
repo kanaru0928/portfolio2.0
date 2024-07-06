@@ -1,0 +1,30 @@
+---
+import BrandIcons from './BrandIcons.astro';
+
+interface Props {
+  content: {
+    title: string;
+    body: {
+      text: string;
+      icon?: string;
+    }[];
+  };
+}
+
+const { content } = Astro.props;
+---
+<div class="card bg-base-200 dark:bg-base-300 border-2 border-accent w-full shadow-xl my-4">
+  <div class="card-body">
+    <h3 class="card-title">{content.title}</h3>
+    <ul>
+      {content.body.map(({text, icon}) => (
+        <li class="flex items-center gap-2">
+          <BrandIcons
+            kind={icon || ""}
+          />
+          {text}
+        </li>
+      ))}
+    </ul>
+  </div>
+</div>
