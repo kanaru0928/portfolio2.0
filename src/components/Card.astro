@@ -1,5 +1,5 @@
 ---
-import BrandIcons from './BrandIcons.astro';
+import BrandIcons from "./BrandIcons.astro";
 
 interface Props {
   content: {
@@ -12,19 +12,34 @@ interface Props {
 }
 
 const { content } = Astro.props;
+
+const skeltonWidth = [15, 10, 20];
 ---
-<div class="card bg-base-200 dark:bg-base-300 border-2 border-accent w-full shadow-xl my-4">
+
+<div
+  class="card bg-base-200 dark:bg-base-300 border-2 border-accent w-full shadow-xl my-4"
+>
   <div class="card-body">
-    <h3 class="card-title">{content.title}</h3>
+    <h3
+      class="card-title h-5 w-28 animate-pulse bg-base-100 rounded-full hidden wf-non-active:block"
+    >
+    </h3>
+    <h3 class="card-title wf-non-active:hidden">{content.title}</h3>
     <ul>
-      {content.body.map(({text, icon}) => (
-        <li class="flex items-center gap-2">
-          <BrandIcons
-            kind={icon || ""}
-          />
-          {text}
-        </li>
-      ))}
+      {
+        content.body.map(({ text, icon }, i) => (
+          <>
+            <li
+              class="items-center gep-2 h-4 bg-base-100 rounded-full animate-pulse wf-non-active:flex hidden my-2"
+              style={{ width: `${skeltonWidth[i]}rem` }}
+            />
+            <li class="flex items-center gap-2 wf-non-active:hidden">
+              <BrandIcons kind={icon || ""} />
+              {text}
+            </li>
+          </>
+        ))
+      }
     </ul>
   </div>
 </div>

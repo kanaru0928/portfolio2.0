@@ -24,10 +24,16 @@ export default function ParallaxedHeader({
           <div className="w-1/2 shrink max-h-80 lg:max-h-full">{children}</div>
           <div className="overlay absolute top-0 bottom-0 right-0 left-0 bg-gradient-to-t from-[rgba(0,0,0,.2)] dark:from-[rgba(0,0,0,.5)]"></div>
           <div className="xl:w-1/2 shrink z-10">
-            <h1 className="text-[clamp(2rem,6vw,4.2rem)] font-black text-accent">
-              {text}
-            </h1>
-            <p className="py-6 font-light">{description}</p>
+            <div className="wf-non-active:hidden">
+              <h1 className="text-[clamp(2rem,6vw,4.2rem)] font-black text-accent wf-non-active:text-transparent">
+                {text}
+              </h1>
+              <p className="my-6 font-light">{description}</p>
+            </div>
+            <div className="hidden wf-non-active:block transition">
+              <div className="h-[clamp(2rem,6vw,4.2rem)] w-72 bg-base-100 rounded-full animate-pulse"></div>
+              <div className="h-4 w-96 my-6 bg-base-100 rounded-full animate-pulse"></div>
+            </div>
           </div>
         </div>
         <TbChevronsDown className="absolute bottom-3 text-5xl animate-bounce" />
