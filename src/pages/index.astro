@@ -9,6 +9,7 @@ import contents from "./contents.json";
 import { Image } from "astro:assets";
 import miku1 from "../images/miku1.png";
 import BrandIcons from "../components/BrandIcons.astro";
+import Card from "../components/Card.astro";
 ---
 
 <Layout title={contents.title}>
@@ -29,21 +30,7 @@ import BrandIcons from "../components/BrandIcons.astro";
         <div class="mx-3 sm:mx-6">
           {
             contents.about.contents.map((content) => (
-              <div class="card bg-base-200 dark:bg-base-300 border-2 border-accent w-full shadow-xl my-4">
-                <div class="card-body">
-                  <h3 class="card-title">{content.title}</h3>
-                  <ul>
-                    {content.body.map(({text, icon}) => (
-                      <li class="flex items-center gap-2">
-                        <BrandIcons
-                          kind={icon || ""}
-                        />
-                        {text}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
+              <Card content={content} />
             ))
           }
         </div>
