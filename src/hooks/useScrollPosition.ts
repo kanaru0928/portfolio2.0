@@ -7,6 +7,8 @@ export default function useScrollPosition() {
     function handleScroll() {
       setScrollPosition(window.scrollY);
     }
+    
+    handleScroll();
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
