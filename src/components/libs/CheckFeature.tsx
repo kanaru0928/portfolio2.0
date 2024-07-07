@@ -52,7 +52,7 @@ export default function CheckFeature() {
               <button
                 className="btn btn-accent"
                 onClick={() => {
-                  window.location.replace("?legacy=true");
+                  window.location.replace("./Lja");
                 }}
               >
                 レガシー版に移動

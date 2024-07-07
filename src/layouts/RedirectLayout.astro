@@ -1,0 +1,14 @@
+---
+interface Props {
+  href: string;
+}
+
+const { href } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="refresh" content={`0;url=${href}`} />
+  </head>
+</html>

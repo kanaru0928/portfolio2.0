@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import useScrollPosition from "../hooks/useScrollPosition";
+import useScrollPosition from "../../hooks/useScrollPosition";
 
 interface ParallaxProps {
   children: React.ReactNode;
