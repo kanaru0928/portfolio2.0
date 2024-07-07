@@ -1,5 +1,5 @@
 import React, { useMemo, useRef } from "react";
-import { useOffsetTop } from "../hooks/useOffsetTop";
+import { useOffsetTop } from "../../hooks/useOffsetTop";
 
 interface Heading2LegacyProps {
   children: React.ReactNode;

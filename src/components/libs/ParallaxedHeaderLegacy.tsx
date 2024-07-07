@@ -1,6 +1,6 @@
 import React, { type ReactNode } from "react";
 import Parallax from "./Parallax";
-import useScrollPosition from "../hooks/useScrollPosition";
+import useScrollPosition from "../../hooks/useScrollPosition";
 import { TbChevronsDown } from "react-icons/tb";
 
 interface ParallaxedHeaderProps {

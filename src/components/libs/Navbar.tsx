@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import useScrollPosition from "../hooks/useScrollPosition.js";
-import useColorTheme from "../hooks/useColorTheme.js";
+import useScrollPosition from "../../hooks/useScrollPosition.js";
+import useColorTheme from "../../hooks/useColorTheme.js";
 
 export default function Navbar() {
   const scrollPosition = useScrollPosition();
