@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
+import { useThrottle } from "./useThrottle";
 
 export default function useScrollPosition() {
   const [scrollPosition, setScrollPosition] = useState(0);
 
+  const handleScroll = useThrottle(() => {
+    setScrollPosition(window.scrollY);
+  }, 10);
+
   useEffect(() => {
-    function handleScroll() {
-      setScrollPosition(window.scrollY);
-    }
-    
     handleScroll();
 
     window.addEventListener("scroll", handleScroll);
