@@ -29,7 +29,7 @@ const { isLegacy = true } = Astro.props;
         description={contents.header.description}
         client:load
       >
-        <Image src={miku1} alt="Miku" />
+        <Image src={miku1} alt="Miku" class="h-full w-full object-contain" />
       </ParallaxedHeaderLegacy>
     ) : (
       <ParallaxedHeader
