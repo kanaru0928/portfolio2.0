@@ -1,40 +1,40 @@
 ---
+import type { CardContent } from "src/types/contents";
 import BrandIcons from "./BrandIcons.astro";
 
 interface Props {
-  content: {
-    title: string;
-    body: {
-      text: string;
-      icon?: string;
-    }[];
-  };
+  content: CardContent;
 }
 
 const { content } = Astro.props;
+
+const { title, body, color = "a" } = content;
 
 const skeltonWidth = [15, 10, 20];
 ---
 
 <div
-  class="card bg-base-200 dark:bg-base-300 border-2 border-accent w-full shadow-xl my-4"
+  class=`card bg-base-200 dark:bg-base-300 border-2 w-full shadow-xl my-4 hover:shadow-2xl hover:bg-base-100 dark:hover:bg-base-100 transition-all duration-300 ease-in-out`
+  style={{
+    borderColor: `oklch(var(--${color}))`
+  }}
 >
   <div class="card-body">
     <h3
       class="card-title h-5 w-28 animate-pulse bg-base-100 rounded-full hidden wf-non-active:block"
     >
     </h3>
-    <h3 class="card-title wf-non-active:hidden">{content.title}</h3>
+    <h3 class="card-title wf-non-active:hidden">{title}</h3>
     <ul>
       {
-        content.body.map(({ text, icon }, i) => (
+        body.map(({ text, Icon }, i) => (
           <>
             <li
               class="items-center gep-2 h-4 bg-base-100 rounded-full animate-pulse wf-non-active:flex hidden my-2"
               style={{ width: `${skeltonWidth[i]}rem` }}
             />
             <li class="flex items-center gap-2 wf-non-active:hidden">
-              <BrandIcons kind={icon || ""} />
+              {Icon ? <Icon /> : null}
               {text}
             </li>
           </>
