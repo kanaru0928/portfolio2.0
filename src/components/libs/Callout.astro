@@ -1,0 +1,27 @@
+---
+import { TbStarFilled } from 'react-icons/tb';
+
+interface Props {
+  title: string;
+  className?: string;
+  rate?: number;
+}
+
+const { title, className = "", rate = 0 } = Astro.props;
+---
+
+<div class=`${className} card bg-base-200 dark:bg-base-300`>
+  <div class="card-body">
+    <div class="card-title items-baseline">
+      <h4 id={title}>{title}</h4>
+      <div class="flex">
+        {
+          [...Array(rate)].map(() => (
+            <TbStarFilled className="text-accent" />
+          ))
+        }
+      </div>
+    </div>
+    <slot />
+  </div>
+</div>
