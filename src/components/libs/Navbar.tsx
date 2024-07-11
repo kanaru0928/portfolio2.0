@@ -2,7 +2,11 @@ import React, { useEffect, useState } from "react";
 import useScrollPosition from "../../hooks/useScrollPosition.js";
 import useColorTheme from "../../hooks/useColorTheme.js";
 
-export default function Navbar() {
+interface NavbarProps {
+  showLinks?: boolean;
+}
+
+export default function Navbar({ showLinks = true }: NavbarProps) {
   const scrollPosition = useScrollPosition();
   const [isShowBg, setIsShowBg] = useState(false);
 
@@ -28,15 +32,19 @@ export default function Navbar() {
       </div>
       <div className="flex-none">
         <ul className="menu menu-horizontal px-1">
-          <li>
-            <a className="btn btn-ghost hidden sm:inline-flex">About</a>
-          </li>
-          <li>
-            <a className="btn btn-ghost hidden sm:inline-flex">Works</a>
-          </li>
-          <li>
-            <a className="btn btn-ghost hidden sm:inline-flex">Articles</a>
-          </li>
+          {showLinks && (
+            <>
+              <li>
+                <a className="btn btn-ghost hidden sm:inline-flex">About</a>
+              </li>
+              <li>
+                <a className="btn btn-ghost hidden sm:inline-flex">Works</a>
+              </li>
+              <li>
+                <a className="btn btn-ghost hidden sm:inline-flex">Articles</a>
+              </li>
+            </>
+          )}
           <li className="flex flex-col justify-center px-4">
             <input
               type="checkbox"

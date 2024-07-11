@@ -1,0 +1,16 @@
+---
+import Callout from '@components/libs/Callout.astro';
+
+interface Props {
+  className?: string;
+  title?: string;
+  rate?: number;
+}
+
+const { className = "", title = "", rate } = Astro.props;
+---
+
+
+<Callout title={`定義${title && `: ${title}`}`} rate={rate} className={className + " my-6"}>
+  <slot />
+</Callout>

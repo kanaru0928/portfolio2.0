@@ -1,0 +1,46 @@
+---
+layout: /src/layouts/ArticleLayout.astro
+title: 現代数学入門B | 復習
+author: Kanaru
+date: 2024-7-11
+---
+
+import Define from '@components/articles/Define.astro'
+
+## 現代数学入門B: 復習
+
+### 集合に関する定義
+
+$X, Y$: 集合とする．
+
+<Define title="直積集合" rate={2}>
+  $$
+  \begin{equation}
+    X \times Y = \{(x, y) \mid x \in X, y \in Y\},
+  \end{equation}
+  $$
+  で定義される集合 $X \times Y$ を $X$ と $Y$ の**直積集合**という．つまり，$X$ と $Y$ の組全体の集合．
+</Define>
+
+<Define title="対応" rate={1}>
+  $G \subseteq X \times Y$: 部分集合．
+  
+  組 $\Gamma$，
+  $$
+  \begin{equation}
+    \Gamma \coloneqq (G, X, Y),
+  \end{equation}
+  $$
+  を $X$ から $Y$ への**対応**という．
+</Define>
+
+<Define title="写像" rate={3}>
+  $f \coloneqq (G, X, Y)$: $X$ から $Y$ への対応．
+  $^\forall{x} \in X$ に対して，$f$ による $y \in Y$ がただ一つ存在するとき，$f$ を $X$ から $Y$ への**写像**といい，
+  $$
+  \begin{equation}
+    f: X \to Y
+  \end{equation}
+  $$
+  と書く．
+</Define>

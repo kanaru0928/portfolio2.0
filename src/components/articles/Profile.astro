@@ -1,0 +1,27 @@
+---
+import { Image } from "astro:assets";
+import avater from "@images/avater.png";
+
+interface Props {
+  className?: string;
+  date: string;
+  author: string;
+}
+
+const { className = "", date, author } = Astro.props;
+
+---
+
+<div class={`${className} flex justify-between items-center`}>
+  <div class="flex gap-3 items-center">
+    <div class="avater">
+      <div class="w-12 rounded-full">
+        <Image src={avater} alt="avater" class="rounded-full" />
+      </div>
+    </div>
+    <p class="text-lg">{author}</p>
+  </div>
+  <div>
+    <p class="text-neutral">{date}</p>
+  </div>
+</div>
