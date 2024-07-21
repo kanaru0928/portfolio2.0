@@ -13,7 +13,13 @@ interface Props {
 const { symbol, open = false, className, title } = Astro.props;
 ---
 
-<details class={clsx("collapse collapse-arrow shadow-xl min-w-80 text-base-100", className)} open={open}>
+<details
+  class={clsx(
+    "collapse collapse-arrow shadow-xl min-w-[min(20rem,100%)] text-base-100",
+    className
+  )}
+  open={open}
+>
   <summary class="collapse-title">
     <div
       class="grid grid-rows-2 grid-cols-[2rem_auto] gap-x-3 items-center grid-flow-col font-sans"
