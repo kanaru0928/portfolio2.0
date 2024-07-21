@@ -1,0 +1,35 @@
+---
+import BlockKatex from "@components/libs/BlockKatex";
+import InlineKatex from "@components/libs/InlineKatex";
+import clsx from "clsx";
+
+interface Props {
+  symbol: string;
+  open?: boolean;
+  className?: string;
+  title: string;
+}
+
+const { symbol, open = false, className, title } = Astro.props;
+---
+
+<details class={clsx("collapse collapse-arrow shadow-xl min-w-80 text-base-100", className)} open={open}>
+  <summary class="collapse-title">
+    <div
+      class="grid grid-rows-2 grid-cols-[2rem_auto] gap-x-3 items-center grid-flow-col font-sans"
+    >
+      <div class="text-3xl row-span-2 text-center">
+        <InlineKatex math={symbol} />
+      </div>
+      <div>
+        <strong>{title}</strong>
+      </div>
+      <div class="flex gap-2 items-center">
+        <slot name="header" />
+      </div>
+    </div>
+  </summary>
+  <div class="collapse-content">
+    <slot />
+  </div>
+</details>

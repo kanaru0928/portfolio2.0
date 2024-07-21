@@ -2,6 +2,8 @@
 import Layout from "@layouts/Layout.astro";
 import contents from "@components/home/_contents.json";
 import HomePage from "@components/home/HomePage.astro";
+import Model from "@components/articles/mathb/Model.astro";
+import useColorTheme from "src/hooks/useColorTheme";
 
 export function getStaticPaths() {
   return [{ params: { lang: "Lja" } }, { params: { lang: "ja" } }];

@@ -10,14 +10,17 @@ const { title, date, author } = Astro.props.frontmatter || Astro.props;
 <Layout title={title}>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
 
-  <Navbar showLinks={false} />
+  <Navbar showLinks={false} client:load />
   <main class="bg-base-200 dark:bg-base-100 min-h-screen flex justify-center pattern">
     <div class="bg-base-100 max-w-5xl w-full px-6 py-9 shadow-xl relative xl:pl-4">
       <div class="absolute h-full top-0 xl:border-r-[12px] border-dotted border-base-300"></div>
       <div class="xl:pl-[40px]">
         <Profile date={date} author={author} />
         <Separator className="my-9" />
-        <slot />
+        <div class="content">
+          <h2>{title}</h2>
+          <slot />
+        </div>
       </div>
     </div>
   </main>

@@ -1,0 +1,17 @@
+---
+import InlineKatex from "@components/libs/InlineKatex";
+import Model from "./Model.astro";
+
+interface Props {
+  setSymbol: string;
+  symbol: string;
+  className?: string;
+}
+
+const { setSymbol, symbol, className } = Astro.props;
+---
+
+<Model symbol={symbol} title="単位元 (Identity Element)" className={className}>
+  <InlineKatex math={`${symbol} \\in ${setSymbol}`} slot="header" />
+  <InlineKatex math={`^\\forall{a} \\in ${setSymbol}, ${symbol} \\cdot a = a = a \\cdot ${symbol}`} />
+</Model>
