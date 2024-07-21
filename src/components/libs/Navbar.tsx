@@ -11,7 +11,12 @@ export default function Navbar({ showLinks = true }: NavbarProps) {
   const [isShowBg, setIsShowBg] = useState(false);
 
   const isDefaultDarkTheme = useColorTheme();
-  const [isDarkTheme, setIsDarkTheme] = useState(isDefaultDarkTheme);
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
+
+  useEffect(() => {
+    console.log("isDefaultDarkTheme", isDefaultDarkTheme);
+    setIsDarkTheme(isDefaultDarkTheme);
+  }, [isDefaultDarkTheme]);
 
   const VisibleThreshold = 20;
   const InvisibleThreshold = 10;
@@ -23,13 +28,12 @@ export default function Navbar({ showLinks = true }: NavbarProps) {
       setIsShowBg(false);
     }
   }, [scrollPosition]);
-  
+
   useEffect(() => {
     const theme = isDarkTheme ? "mocha" : "latte";
     console.log("theme", theme);
     document.documentElement.classList.add(theme);
-    
-    
+
     return () => {
       document.documentElement.classList.remove(theme);
     };
@@ -61,7 +65,7 @@ export default function Navbar({ showLinks = true }: NavbarProps) {
             <input
               type="checkbox"
               data-toggle-theme="latte,mocha"
-              onChange={() => setIsDarkTheme(!isDarkTheme)}
+              onInput={(e) => setIsDarkTheme(e.currentTarget.checked)}
               className="toggle rounded-full cursor-pointer"
               defaultChecked={isDefaultDarkTheme}
             />

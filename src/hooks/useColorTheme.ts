@@ -9,7 +9,7 @@ export default function useColorTheme() {
       ? theme == "mocha"
       : window.matchMedia("(prefers-color-scheme: dark)").matches;
     setIsDarkMode(mode);
-  });
+  }, []);
 
   return isDarkMode;
 }
