@@ -13,7 +13,7 @@ import Field from "@components/articles/mathb/Field.astro";
 ---
 
 <ArticleLayout title="現代数学入門B: 各構造のイメージ" author="Kanaru" date="2024-7-16">
-  <dir class="flex flex-col gap-4">
+  <div class="flex flex-col gap-4">
     <Semigroup symbol="S" binSymbol="\\cdot" className="bg-red" BinIcon={TbPointFilled} />
     <Monoid symbol="M" binSymbol="\\cdot" className="bg-green" BinIcon={TbPointFilled} />
     <Group symbol="G" binSymbol="\\cdot" className="bg-pink" BinIcon={TbPointFilled} />
@@ -21,5 +21,5 @@ import Field from "@components/articles/mathb/Field.astro";
     <Ring symbol="R" className="bg-blue" />
     <CommutativeRing symbol="R" className="bg-teal" />
     <Field symbol="K" className="bg-yellow" />
-  </dir>
+  </div>
 </ArticleLayout>
