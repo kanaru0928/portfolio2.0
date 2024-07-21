@@ -1,0 +1,18 @@
+---
+import InlineKatex from "@components/libs/InlineKatex";
+import Model from "./Model.astro";
+
+interface Props {
+  setSymbol: string;
+  symbol: string;
+  idSymbol: string;
+  className?: string;
+}
+
+const { setSymbol, symbol, idSymbol, className } = Astro.props;
+---
+
+<Model symbol={symbol} title="逆元 (Inverse Element)" className={className}>
+  <InlineKatex math={`${symbol} \\in ${setSymbol}`} slot="header" />
+  <InlineKatex math={`^\\forall{x} \\in ${setSymbol}, ^\\exists{${symbol}} \\in ${setSymbol}, ${symbol} \\cdot x = ${idSymbol} = x \\cdot ${symbol}`} />
+</Model>

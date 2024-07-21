@@ -1,0 +1,47 @@
+---
+layout: /src/layouts/ArticleLayout.astro
+title: 現代数学入門B | 復習
+author: Kanaru
+date: 2024-7-11
+---
+
+import Define from "@components/articles/Define.astro";
+import GRK from "@components/articles/mathb/GRK.astro";
+import SemigroupCollapse from "@components/articles/mathb/SemigroupCollapse.astro";
+import TeX from "@components/articles/mathb/TeX";
+
+## 現代数学入門B: 群・環・体
+
+### 群に関する定義
+
+$S$: 集合とする．
+
+<Define title="マグマ" rate={1}>
+  $\cdot$ : 二項演算，
+  $$
+  \begin{equation}
+    \begin{alignedat}{3}
+      \cdot & : & S \times S & \to S \\ & & (x, y) & \mapsto x \cdot y.
+    \end{alignedat}
+  \end{equation}
+  $$
+  $S$と二項演算 $\cdot$ の組 $(S, \cdot)$ を**マグマ**という．
+</Define>
+
+<Define title="半群" rate={2}>
+  $(S, \cdot)$: マグマ 二項演算 $\cdot$ が以下を満たすとき，$(S, \cdot)$
+  を**半群**という．
+  1. 結合法則: $^\forall{x}, ^\forall{y}, ^\forall{z} \in S, x \cdot (y \cdot z) = (x \cdot y) \cdot z$．
+</Define>
+
+<SemigroupCollapse className="bg-red rounded-xl collapse-open">
+  $S$
+  <Fragment slot="bin">
+    $S \times S \to S$
+  </Fragment>
+  <Fragment slot="bin_header">
+    $\cdot$
+  </Fragment>
+</SemigroupCollapse>
+
+<TeX />

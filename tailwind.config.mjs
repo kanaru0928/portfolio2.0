@@ -1,6 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 
-import catppuccin from "@catppuccin/daisyui";
+import catppuccinDaisyui from "@catppuccin/daisyui";
+import catppuccin from "@catppuccin/tailwindcss";
+import daisyui from "daisyui";
 import plugin from "tailwindcss/plugin";
 
 export default {
@@ -9,7 +11,10 @@ export default {
     extend: {},
   },
   plugins: [
-    require("daisyui"),
+    daisyui,
+    catppuccin({
+      // defaultFlavour: "latte",
+    }),
     plugin(({ addVariant, e }) => {
       addVariant("wf-non-active", ({ modifySelectors, separator }) => {
         modifySelectors(({ className }) => {
@@ -19,7 +24,7 @@ export default {
     }),
   ],
   daisyui: {
-    themes: [catppuccin("latte", "mauve"), catppuccin("mocha", "mauve")],
+    themes: [catppuccinDaisyui("latte", "mauve"), catppuccinDaisyui("mocha", "mauve")],
     // darkTheme: "mocha",
     // themeRoot: "*",
   },

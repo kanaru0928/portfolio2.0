@@ -1,0 +1,37 @@
+---
+import InlineKatex from "@components/libs/InlineKatex";
+import Model from "./Model.astro";
+import { TbPointFilled, TbVectorTriangle } from "react-icons/tb";
+import BinaryOperation from "./BinaryOperation.astro";
+import type { IconType } from "react-icons";
+
+interface Props {
+  className?: string;
+  binSymbol: string;
+  BinIcon: IconType;
+  symbol: string;
+  open?: boolean;
+  title?: string;
+}
+
+const { className = "", binSymbol, symbol, open, BinIcon, title = "半群 (Semigroup)" } = Astro.props;
+---
+
+<Model symbol={symbol} title={title} className={className} open={open}>
+  <Fragment slot="header">
+    <div class="tooltip" data-tip="二項演算">
+      <BinIcon />
+    </div>
+    <div class="tooltip" data-tip="結合法則">
+      <TbVectorTriangle />
+    </div>
+  </Fragment>
+  <div class="flex gap-4 items-start flex-wrap">
+    <BinaryOperation symbol={binSymbol} className="bg-peach flex-1">
+      <InlineKatex math="S \\times S \\to S" slot="header" />
+      <p class="flex items-center gap-2">
+        <TbVectorTriangle /> 結合法則
+      </p>
+    </BinaryOperation>
+  </div>
+</Model>

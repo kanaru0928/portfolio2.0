@@ -1,0 +1,66 @@
+---
+import {
+  TbPointFilled,
+  TbVectorTriangle,
+  TbLetterE,
+  TbExposureMinus1,
+  TbRepeat,
+} from "react-icons/tb";
+import Model from "./Model.astro";
+import Group from "./Group.astro";
+import BinaryOperation from "./BinaryOperation.astro";
+import InlineKatex from "@components/libs/InlineKatex";
+import type { IconType } from "node_modules/react-icons/lib/iconBase";
+
+interface Props {
+  className?: string;
+  binSymbol: string;
+  BinIcon: IconType;
+  symbol: string;
+  open?: boolean;
+  title?: string;
+}
+
+const {
+  className = "",
+  binSymbol,
+  symbol,
+  open,
+  BinIcon,
+  title = "Abel群 (Abel Group)",
+} = Astro.props;
+---
+
+<Model title={title} symbol={symbol} open={open} className={className}>
+  <Fragment slot="header">
+    <div class="tooltip" data-tip="二項演算">
+      <BinIcon />
+    </div>
+    <div class="tooltip" data-tip="結合法則">
+      <TbVectorTriangle />
+    </div>
+    <div class="tooltip" data-tip="単位元">
+      <TbLetterE />
+    </div>
+    <div class="tooltip" data-tip="逆元">
+      <TbExposureMinus1 />
+    </div>
+    <div class="tooltip" data-tip="交換法則">
+      <TbRepeat />
+    </div>
+  </Fragment>
+  <div class="flex gap-4 items-start flex-wrap">
+    <Group
+      symbol={symbol}
+      binSymbol={binSymbol}
+      BinIcon={BinIcon}
+      className="bg-blue lg:flex-1"
+    />
+    <BinaryOperation symbol={binSymbol} className="bg-peach lg:flex-1">
+      <InlineKatex math="G \\times G \\to G" slot="header" />
+      <p class="flex items-center gap-2">
+        <TbRepeat /> 交換法則
+      </p>
+    </BinaryOperation>
+  </div>
+</Model>

@@ -1,3 +1,16 @@
+.content p,li {
+  // font-family: serif;
+}
+
+strong {
+  font-family: sans-serif;
+}
+
+ol li::before {
+  content: "("counter(list)") ";
+  counter-increment: list;
+}
+
 h2 {
   @apply font-bold text-3xl my-5;
 }

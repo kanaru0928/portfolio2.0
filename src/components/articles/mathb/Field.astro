@@ -1,0 +1,76 @@
+---
+import {
+  TbPointFilled,
+  TbVectorTriangle,
+  TbLetterE,
+  TbExposureMinus1,
+  TbRepeat,
+  TbPlus,
+  TbNumber0,
+  TbMinus,
+  TbArrowsSplit,
+  TbNumber1,
+  TbMathXDivideY2,
+} from "react-icons/tb";
+import Model from "./Model.astro";
+import Group from "./Group.astro";
+import BinaryOperation from "./BinaryOperation.astro";
+import InlineKatex from "@components/libs/InlineKatex";
+import type { IconType } from "node_modules/react-icons/lib/iconBase";
+import AbelGroup from "./AbelGroup.astro";
+import Ring from "./Ring.astro";
+import CommutativeRing from "./CommutativeRing.astro";
+import Inverse from "./Inverse.astro";
+
+interface Props {
+  className?: string;
+  symbol: string;
+  open?: boolean;
+  title?: string;
+}
+
+const { className = "", symbol, open, title = "体 (Field)" } = Astro.props;
+---
+
+<Model title={title} symbol={symbol} open={open} className={className}>
+  <Fragment slot="header">
+    <div class="tooltip" data-tip="加算">
+      <TbPlus />
+    </div>
+    <div class="tooltip" data-tip="結合法則">
+      <TbVectorTriangle />
+    </div>
+    <div class="tooltip" data-tip="単位元">
+      <TbNumber0 />
+    </div>
+    <div class="tooltip" data-tip="逆元">
+      <TbMinus />
+    </div>
+    <div class="tooltip" data-tip="交換法則">
+      <TbRepeat />
+    </div>
+    <div class="divider divider-horizontal m-0"></div>
+    <div class="tooltip" data-tip="乗算">
+      <TbPointFilled />
+    </div>
+    <div class="tooltip" data-tip="結合法則">
+      <TbVectorTriangle />
+    </div>
+    <div class="tooltip" data-tip="分配法則">
+      <TbArrowsSplit />
+    </div>
+    <div class="tooltip" data-tip="単位元">
+      <TbNumber1 />
+    </div>
+    <div class="tooltip" data-tip="交換法則">
+      <TbRepeat />
+    </div>
+    <div class="tooltip" data-tip="逆元">
+      <TbMathXDivideY2 />
+    </div>
+  </Fragment>
+  <div class="flex gap-4 items-start flex-wrap">
+    <CommutativeRing symbol={symbol} className="bg-teal lg:flex-1" />
+    <Inverse symbol="y" setSymbol="K" idSymbol="1" className="bg-peach lg:flex-1" />
+  </div>
+</Model>

@@ -1,0 +1,40 @@
+---
+import InlineKatex from "@components/libs/InlineKatex";
+import Model from "./Model.astro";
+import { TbExposureMinus1, TbLetterE, TbPointFilled, TbVectorTriangle } from "react-icons/tb";
+import Monoid from "./Monoid.astro";
+import Inverse from "./Inverse.astro";
+import type { IconType } from "node_modules/react-icons/lib/iconBase";
+
+interface Props {
+  className?: string;
+  binSymbol: string;
+  BinIcon: IconType;
+  symbol: string;
+  open?: boolean;
+  title?: string;
+}
+
+const { className = "", binSymbol, symbol, open, BinIcon, title = "群 (Group)" } = Astro.props;
+---
+
+<Model title={title} symbol={symbol} open={open} className={className}>
+  <Fragment slot="header">
+    <div class="tooltip" data-tip="二項演算">
+      <BinIcon />
+    </div>
+    <div class="tooltip" data-tip="結合法則">
+      <TbVectorTriangle />
+    </div>
+    <div class="tooltip" data-tip="単位元">
+      <TbLetterE />
+    </div>
+    <div class="tooltip" data-tip="逆元">
+      <TbExposureMinus1 />
+    </div>
+  </Fragment>
+  <div class="flex gap-4 items-start flex-wrap">
+    <Monoid symbol={symbol} binSymbol={binSymbol} className="bg-green lg:flex-1" BinIcon={BinIcon} />
+    <Inverse symbol="y" setSymbol="G" idSymbol="e" className="bg-peach lg:flex-1" />
+  </div>
+</Model>
