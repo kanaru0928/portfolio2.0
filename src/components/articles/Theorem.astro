@@ -8,13 +8,22 @@ interface Props {
 }
 
 const { className = "", title = "", rate } = Astro.props;
+const hasProof = Astro.slots.proof !== undefined;
 ---
 
 <Callout
-  title={`定義${title && `: ${title}`}`}
+  title={`定理${title && `: ${title}`}`}
   rate={rate}
   className={className + " my-6"}
   idTitle={title}
 >
   <slot />
+  {
+    hasProof && (
+      <details>
+        <summary>証明</summary>
+        <slot name="proof" />
+      </details>
+    )
+  }
 </Callout>
