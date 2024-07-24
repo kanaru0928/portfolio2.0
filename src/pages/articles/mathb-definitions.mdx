@@ -1,0 +1,348 @@
+---
+layout: /src/layouts/ArticleLayout.astro
+title: "現代数学入門B: 定義集"
+author: Kanaru
+date: 2024-7-11
+---
+
+import Define from '@components/articles/Define.astro'
+import Corollary from '@components/articles/Corollary.astro'
+
+### 前提知識
+
+[復習](mathb-review)を参照．
+
+### 基本的な構造
+
+[各構造のイメージ](mathb-image)を参照．
+
+### 群に関する定義
+
+<Define title="単元" rate={1}>
+  $M$: モノイド，$x \in M$．
+  
+  $x$ の逆元 $x^{-1} \in M$ が存在するとき，$x$ を**単元**という．すなわち，
+  $$
+  \begin{equation}
+    ^\exists{x^{-1}} \in M, x \cdot x^{-1} = e = x^{-1} \cdot x.
+  \end{equation}
+  $$
+</Define>
+
+### 置換に関する定義
+
+<Define title="対称群" rate={3}>
+  $X$: $n$ 個の元を持つ有限集合．
+  
+  全単射 $f: X \to X$ 全体の集合
+  $$
+  S_n = \{f \mid f: X \to X \text{ が全単射}\},
+  $$
+  を **$n$ 次対称群**という．$X$ の元に $1$ から $n$ の番号を振り， $\sigma \in S_n$ を，
+  $$
+  \begin{equation}
+    \sigma = \begin{pmatrix}
+      1 & 2 & \cdots & n \\
+      \sigma(1) & \sigma(2) & \cdots & \sigma(n)
+    \end{pmatrix},
+  \end{equation}
+  $$
+  と表記する．名前の通り $S_n$ は群であるが，積 $f \circ g$ (順番に注意) は合成写像とする．
+</Define>
+
+<Define title="巡回置換" rate={2}>
+  置換
+  $$
+  \begin{equation}
+    \sigma = \begin{pmatrix}
+      i_1 & i_2 & \cdots & i_{m-1} & i_m \\
+      i_2 & i_3 & \cdots & i_{m} & i_1
+    \end{pmatrix},
+  \end{equation}
+  $$
+  を長さ $m$ の**巡回置換**といい，
+  $$
+  \begin{equation}
+    \sigma = (i_1, i_2, \ldots, i_m),
+  \end{equation}
+  $$
+  と表記する．特に，長さ2の巡回置換を**互換**という．
+</Define>
+
+<Define title="符号" rate={1}>
+  $\sigma \in S_n$: 置換．
+  
+  $\tau_1, \ldots ,\tau_m$ を互換とし，
+  $$
+  \sigma = \tau_1 \tau_2 \cdots \tau_m,
+  $$
+  のように $\sigma$ が $m$ 個の互換の積であらわされるとき，$\sigma$ の**符号** $\operatorname{sgn}(\sigma)$ を，
+  $$
+  \begin{equation}
+    \operatorname{sgn}(\sigma) \coloneqq (-1)^m,
+  \end{equation}
+  $$
+  で定義する．
+  $\operatorname{sgn}(\sigma) = -1$ のとき $\sigma$ を**奇置換**，$\operatorname{sgn}(\sigma) = 1$ のとき $\sigma$ を**偶置換**という．
+</Define>
+
+### 群の準同型に関する定義
+
+<Define title="群の準同型" rate={3}>
+  $G, H$: 群，$f: G \to H$: 写像．
+  $$
+  \begin{equation}
+    ^\forall{g_1, g_2} \in G, f(g_1 \cdot g_2) = f(g_1) \cdot f(g_2)
+  \end{equation}
+  $$
+  が成り立つとき，$f$ を群の準同型という．
+</Define>
+
+<Define title="同型 (群)" rate={2}>
+  $G, H$: 群，$f: G \to H$: 群の準同型．
+  
+  $f$ が全単射であるとき，$f$ を群の**同型**といい，
+  $$
+  \begin{equation}
+    G \cong H
+  \end{equation}
+  $$
+  と表記する．
+</Define>
+
+### 部分群に関する定義
+
+<Define title="部分群" rate={3}>
+  $G$: 群，$H \subseteq G$: 部分集合．
+  
+  $H$ が $G$ と同じ演算で群をなすとき，$H$ を $G$ の**部分群**という．
+</Define>
+
+<Corollary>
+  $e$: 群 $G$ の単位元，$e_H$: 部分群 $H$ の単位元．
+  $$
+  \begin{equation}
+    e_H = e.
+  \end{equation}
+  $$
+  
+  $x \in G$: $G$ の元，$x^{-1}$: $x$ の逆元，$x^{-1}_H$: $x$ の $H$ での逆元．
+  $$
+  \begin{equation}
+    x^{-1}_H = x^{-1}.
+  \end{equation}
+  $$
+</Corollary>
+
+<Define title="整数倍，整数乗" rate={2}>
+  $G$: 乗法群，$g \in G$．
+  
+  $n \in \mathbb{Z}$に対し，
+  $$
+  \begin{equation}
+    g^n \coloneqq \begin{cases}
+      \underbrace{g g \cdots g}_{n}, & (n > 0), \\
+      e, & (n = 0), \\
+      \underbrace{g^{-1} g^{-1} \cdots g^{-1}}_{-n}, & (n < 0).
+    \end{cases}
+  \end{equation}
+  $$
+  
+  $G$: 加法群，$g \in G$．
+  
+  $n \in \mathbb{Z}$に対し，
+  $$
+  \begin{equation}
+    ng \coloneqq \begin{cases}
+      \underbrace{g + g + \cdots + g}_{n}, & (n > 0), \\
+      0, & (n = 0), \\
+      \underbrace{(-g) + (-g) + \cdots + (-g)}_{-n}, & (n < 0).
+    \end{cases}
+  \end{equation}
+  $$
+</Define>
+
+<Define title="生成される巡回群" rate={2}>
+  $G$: 群，$g \in G$．
+  
+  $$
+  \begin{equation}
+    \langle g \rangle \coloneqq \{g^n \mid n \in \mathbb{Z}\},
+  \end{equation}
+  $$
+  または，
+  $$
+  \begin{equation}
+    \langle g \rangle \coloneqq \{ng \in G \mid n \in \mathbb{Z}\},
+  \end{equation}
+  $$
+  を $g$ の**生成する巡回群**という．
+</Define>
+
+<Define title="巡回群の位数" rate={1}>
+  $G$: 群，$g \in G$．
+  
+  $g$ の生成する巡回群 $\langle g \rangle$ の元の個数を $g$ の**位数**という．
+</Define>
+
+<Define title="正規部分群" rate={3}>
+  $G$: 群，$N \subseteq G$: 部分群．
+  
+  $^\forall{x} \in G$に対し，
+  $$
+  \begin{align}
+    xN &\coloneqq \{x \cdot n \mid n \in N\}, \\
+    Nx &\coloneqq \{n \cdot x \mid n \in N\},
+  \end{align}
+  $$
+  と定義する．
+  $$
+  \begin{equation}
+    xN = Nx,
+  \end{equation}
+  $$
+  が成り立つとき，$N$ を $G$ の**正規部分群**といい，
+  $$
+  \begin{equation}
+    N \triangleleft G
+  \end{equation}
+  $$
+  と表記する．
+</Define>
+
+### 群の同値関係に関する定義
+
+<Define title="合同" rate={2}>
+  $G$: 加法群，$H \subseteq G$: 部分群，$x, y \in G$．
+  
+  $x - y \in H$ のとき，$x$ と $y$ は $H$ に**合同**であるといい，
+  $$
+  \begin{equation}
+    x \equiv y \bmod{H}
+  \end{equation}
+  $$
+  と表記する．
+</Define>
+
+<Define title="左右合同" rate={1}>
+  $G$: 乗法群，$H \subseteq G$: 部分群，$x, y \in G$．
+  
+  1. $x \cdot y^{-1} \in H$ のとき，$x$ と $y$ は $H$ に**左合同**であるといい，$x \equiv_r y \bmod{H}$ と表記する．
+  2. $y^{-1} \cdot x \in H$ のとき，$x$ と $y$ は $H$ に**右合同**であるといい，$x \equiv_l y \bmod{H}$ と表記する．
+</Define>
+
+<Corollary>
+  $G$: 群，$H \subseteq G$: 部分群，$\sim$: $H$を法とした右合同，$x \in H$．
+  
+  $\sim$ は同値関係であり，
+  $$
+  \begin{equation}
+    \begin{aligned}
+      C(x) &= \{ y \in G \mid y \equiv_r x \bmod{H}\} \\
+           &= Hx.
+    \end{aligned}
+  \end{equation}
+  $$
+  左合同でも同様．
+</Corollary>
+
+<Define title="同値類" rate={3}>
+  $S$: 集合，$\sim$: $S$ 上の同値関係．
+  
+  $x \in S$ に対し，
+  $$
+  \begin{equation}
+    C(x) \coloneqq \{y \in S \mid x \sim y\},
+  \end{equation}
+  $$
+  を $x$ の属する**同値類**という．また，$C(x)$ の元を $C(x)$ の**代表元**という．
+  
+  特に，$H = N \triangleleft G, x \in N$ の時，$N$ を法とした合同関係で，
+  $$
+  \begin{equation}
+    \overline{x} \coloneqq xN = Nx,
+  \end{equation}
+  $$
+  と表記する．
+</Define>
+
+<Define title="完全代表系" rate={1}>
+  $S$: 集合，$\sim$: $S$ 上の同値関係，$R$: $S$ の完全代表系．
+  
+  $$
+  \begin{equation}
+    S = \coprod_{x \in X} C(x),
+  \end{equation}
+  $$
+  が成り立つ時，$X$ を $S$ の同値関係 $\sim$ の**完全代表系**であるという．
+</Define>
+
+### 商集合に関する定義
+
+<Define title="商集合" rate={3}>
+  $S$: 集合，$\sim$: $S$ 上の同値関係．
+  
+  同値類全体の集合，
+  $$
+  \begin{equation}
+    S/{\sim} \coloneqq \{ C \in \operatorname{\mathcal{P}}(S) \mid C: \text{同値類} \},
+  \end{equation}
+  $$
+  を $S$ の**商集合**という．ただし，$\operatorname{\mathcal{P}}(S)$ は $S$ の冪集合．
+</Define>
+
+<Define title="自然な全射" rate={2}>
+  $S$: 集合，$\sim$: $S$ 上の同値関係，$S/{\sim}$: $S$ の商集合．
+  
+  $$
+  \begin{equation}
+    \begin{aligned}
+      P: S &\to S/{\sim}, \\
+      x &\mapsto C(x),
+    \end{aligned}
+  \end{equation}
+  $$
+  を**自然な全射**という．
+</Define>
+
+<Define title="剰余類" rate={3}>
+  $G$: 群，$H \subseteq G$: 部分群，$x \in G$．
+  
+  1. $H$ を法とした右合同関係での同値類 $Hx$ を，$x$ の**右剰余類**という．
+  2. $H$ を法とした左合同関係での同値類 $xH$ を，$x$ の**左剰余類**という．
+</Define>
+
+<Define title="部分群による商集合" rate={3}>
+  $G$: 群，$H \subseteq G$: 部分群．
+  
+  1. $H$ を法とした左合同関係での商集合を，$G/H$ と表記する．
+  2. $H$ を法とした右合同関係での商集合を，$H\backslash G$ と表記する．
+</Define>
+
+<Define title="指数" rate={1}>
+  $G$: 群，$H \subseteq G$: 部分群．
+  
+  部分群 $H$ の**指数** $[G:H]$ を，
+  $$
+  \begin{equation}
+    [G:H] \coloneqq \left| G/H \right| = \left| H\backslash G \right|
+  \end{equation}
+  $$
+</Define>
+
+<Define title="G/N上の乗法" rate={3}>
+  $G$: 群，$N \triangleleft G$．
+  
+  この時，$G/N$ 上の乗法を，
+  $$
+  \begin{equation}
+    \begin{aligned}
+      G/N \times G/N &\to G/N, \\
+      (\overline{x}, \overline{y}) &\mapsto \overline{xy} \eqqcolon \overline{x} \, \overline{y},
+    \end{aligned}
+  \end{equation}
+  $$
+  と定義する．これはwell-definedで，この演算により $G/N$ は群となる．
+</Define>
+
+

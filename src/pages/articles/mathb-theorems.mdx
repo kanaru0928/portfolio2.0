@@ -1,0 +1,152 @@
+---
+layout: /src/layouts/ArticleLayout.astro
+title: "現代数学入門B: 定理集"
+author: Kanaru
+date: 2024-7-11
+---
+
+import Define from '@components/articles/Define.astro'
+import Corollary from '@components/articles/Corollary.astro'
+import Theorem from '@components/articles/Theorem.astro'
+
+### 前提知識
+
+[復習](mathb-review)と[定義](mathb-definitions)を参照．
+
+### 群に関する定理など
+
+<Theorem rate={2}>
+  $X, Y, Z$: 集合，$f: X \to Y, g: Y \to Z$: 写像．
+  
+  $$
+  \begin{align}
+    g \circ f: \text{全射} \Rightarrow g: \text{全射}. \\
+    g \circ f: \text{単射} \Rightarrow f: \text{単射}.
+  \end{align}
+  $$
+</Theorem>
+
+### 置換に関する定理など
+
+<Corollary title="対称群の元の個数" rate={2}>
+  $S_n$: $n$ 次対称群．
+  
+  $S_n$ の元の個数は $n!$ である．
+</Corollary>
+
+### 部分群に関する定理など
+
+<Theorem title="部分群の判定" rate={3}>
+  $G$: 群，$H \subseteq G$: 部分集合．
+  
+  $H$ が $G$ の部分群であるための必要十分条件は，
+  
+  1. $(x \in H, y \in H) \Rightarrow xy \in H,$
+  2. $e \in H,$
+  3. $x \in H \Rightarrow x^{-1} \in H.$
+</Theorem>
+
+<Theorem title="群の準同型の像は部分群" rate={1}>
+  $G, G'$: 乗法群，$f: G \to G'$: 群の準同型．
+  
+  $$
+  \begin{equation}
+    \operatorname{Im}{f} = \{ f(x) \in G' \mid x \in G \},
+  \end{equation}
+  $$
+  
+  は $G'$ の部分群．
+</Theorem>
+
+<Theorem title="群の準同型の核は部分群" rate={1}>
+  $G, G'$: 乗法群，$f: G \to G'$: 群の準同型．
+  $$
+  \begin{equation}
+    \operatorname{Ker}{f} = \{ x \in G \mid f(x) = e' \},
+  \end{equation}
+  $$
+  は $G$ の部分群．
+</Theorem>
+
+### 同値関係に関する定理など
+
+<Theorem title="Lagrangeの定理" rate={1}>
+  $G$: 群，$H \subseteq G$: 部分群．
+  
+  $$
+  \begin{equation}
+    |G| = |H| [G:H].
+  \end{equation}
+  $$
+  
+  特に，$|H|$ は $|G|$ の約数．
+</Theorem>
+
+<Theorem title="合同なもの同士の演算" rate={2}>
+  $G$: 乗法群，$N \triangleleft G$，$x, x', y, y' \in G$．
+  
+  $$
+  \begin{equation}
+    \left.\begin{aligned}
+      x \equiv y \bmod{N}, \\
+      x' \equiv y' \bmod{N},
+    \end{aligned}\right\}
+    \Rightarrow xy \equiv x'y' \bmod{N}.
+  \end{equation}
+  $$
+</Theorem>
+
+<Theorem title="G/N上の乗法はwell-defined" rate={3}>
+  $G$: 群，$N \triangleleft G$．
+  
+  $G/N$ 上の二項演算，
+  $$
+  \begin{equation}
+    \begin{aligned}
+      G/N \times G/N &\to G/N, \\
+      (\overline{x}, \overline{y}) &\mapsto \overline{xy},
+    \end{aligned}
+  \end{equation}
+  $$
+  はwell-definedである．
+  <Fragment slot="proof">
+    [合同なもの同士の演算](#合同なもの同士の演算)より，
+    $$
+    \begin{equation}
+      \left.\begin{aligned}
+        \overline{x} = \overline{x'}, \\
+        \overline{y} \equiv \overline{y'},
+      \end{aligned}\right\}
+      \Rightarrow \overline{xy} = \overline{x'y'}.
+    \end{equation}
+    $$
+    よって，$x, y$ の取り方に関わらず $\overline{xy}$ は一意に定まる．
+  </Fragment>
+</Theorem>
+
+<Theorem title="G/Nの自然な全射は群の準同型" rate={2}>
+  $G$: 群，$N \triangleleft G$．
+  
+  $$
+  \begin{equation}
+    \begin{aligned}
+      P: G &\to G/N, \\
+      x &\mapsto \overline{x},
+    \end{aligned}
+  \end{equation}
+  $$
+  は群の準同型．
+</Theorem>
+
+<Theorem title="群の準同型定理">
+  $G, G'$: 乗法群，$f: G \to G'$: 群の準同型．
+  
+  $$
+  \begin{equation}
+    \begin{aligned}
+      \operatorname{Ker}{f} &\triangleleft G, \\
+      \operatorname{Im}{f} &\leq G'.
+    \end{aligned}
+  \end{equation}
+  $$
+</Theorem>
